@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <a href="{{ path('homepage') }}">log_out</a>
+    </div>
+    <h1>User</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ user.name }}</td>
+            </tr>
+            <tr>
+                <th>pseudo</th>
+                <td>{{ user.pseudo }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Perso</h2>
+    <table>
+        <tbody>
+        {% for perso in user.persos %}
+            {% if(perso.nom == 'mj') %}
+            <tr>
+                <th>Nom : </th>
+                <td>{{ perso.nom }}</td>
+            </tr>
+            <br/>
+            {% else %}
+                <tr>
+                    <th>Nom : </th>
+                    <td>{{ perso.nom }}</td>
+                    <td> MJ </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('user_edit', { 'id': user.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

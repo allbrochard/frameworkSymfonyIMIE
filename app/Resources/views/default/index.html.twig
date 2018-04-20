@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script>
+        if({{ reConnect }} == 1){
+            alert('Mauvais Pseudo ou Mot de passe !');
+        }
+    </script>
+    <div>
+        <span>Connect</span>
+        {{ form_start(login_form) }}
+        {{ form_widget(login_form) }}
+        <input type="submit" value="Connect" />
+        {{ form_end(login_form) }}
+    </div>
+    <div>
+        <a href="{{ path('user_new') }}">Create</a>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
